@@ -51,19 +51,59 @@ private struct GitHubRepoCellView: View {
     var repository: Repository
 
     var body: some View {
-        VStack(alignment: .leading) {
-            HStack {
-                Text(repository.owner.login)
-                Text(repository.name)
+        HStack(spacing: 20) {
+            VStack {
+                GitHubRepoOwnerImageView(repository.owner.avatarUrl)
+
+                Spacer()
+
+                VStack(alignment: .leading) {
+                    HStack {
+                        Image(systemName: "tuningfork")
+                        Text("\(repository.forks)")
+                    }
+
+                    HStack {
+                        Image(systemName: "star")
+                        Text("\(repository.watchers)")
+                    }
+                }
             }
 
-            Spacer()
+            VStack(alignment: .leading) {
+                HStack {
+                    Text(repository.owner.login)
+                        .font(.title3.italic())
 
-            HStack {
-                Text("Forks: \(repository.forks)")
-                Text("Watchers: \(repository.watchers)")
+                    Text(repository.name)
+                        .font(.title2.bold())
+                }
+
+                Spacer()
+
+                Text(repository.description ?? "No description provided")
+                    .font(.body)
             }
         }
+    }
+}
+
+private struct GitHubRepoOwnerImageView: View {
+    @ObservedObject var imageModel: UrlImageModel
+
+    var body: some View {
+        if let image = imageModel.image {
+            Image(uiImage: image)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: 50)
+        } else {
+            Image(systemName: "trash")
+        }
+    }
+
+    init(_ imageUrl: String) {
+        imageModel = UrlImageModel(from: imageUrl)
     }
 }
 
@@ -82,7 +122,9 @@ struct GitHubRepoListView_Previews: PreviewProvider {
             id: 1,
             name: "Test",
             fullName: "t/Test",
-            description: nil,
+            description: "Yoggoth mnahn' vulgtm ebunma nafln'gha kn'a 'ai, " +
+            "cgeb wgah'n shtunggliog bug hupadgh, goka ya fhtagn shugg " +
+            "ebunma.",
             owner: Owner(login: "t", avatarUrl: ""),
             watchers: 100,
             forks: 3,
@@ -94,7 +136,7 @@ struct GitHubRepoListView_Previews: PreviewProvider {
             name: "Alamofire",
             fullName: "t/Alamofire",
             description: nil,
-            owner: Owner(login: "t", avatarUrl: ""),
+            owner: Owner(login: "testAccount", avatarUrl: ""),
             watchers: 143,
             forks: 13,
             homepage: nil,

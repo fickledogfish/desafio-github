@@ -22,6 +22,8 @@
 		0ED354DE276A614D002C4D81 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354DD276A614D002C4D81 /* Owner.swift */; };
 		0ED354E1276A6263002C4D81 /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E0276A6263002C4D81 /* RepositoryListViewModel.swift */; };
 		0ED354E3276A6814002C4D81 /* GitHubRepoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E2276A6814002C4D81 /* GitHubRepoDetailsView.swift */; };
+		0ED354E5276A900A002C4D81 /* UrlImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E4276A900A002C4D81 /* UrlImageModel.swift */; };
+		0ED354E7276A9184002C4D81 /* GitHubAvatarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E6276A9184002C4D81 /* GitHubAvatarService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +61,8 @@
 		0ED354DD276A614D002C4D81 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		0ED354E0276A6263002C4D81 /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
 		0ED354E2276A6814002C4D81 /* GitHubRepoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoDetailsView.swift; sourceTree = "<group>"; };
+		0ED354E4276A900A002C4D81 /* UrlImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageModel.swift; sourceTree = "<group>"; };
+		0ED354E6276A9184002C4D81 /* GitHubAvatarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAvatarService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,7 @@
 			children = (
 				0ED354CE276A5ACB002C4D81 /* GitHubRepositorySearchService.swift */,
 				0ED354D0276A5BAE002C4D81 /* SortBy.swift */,
+				0ED354E6276A9184002C4D81 /* GitHubAvatarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -178,6 +183,7 @@
 			children = (
 				0ED354DB276A5FD9002C4D81 /* Repository.swift */,
 				0ED354DD276A614D002C4D81 /* Owner.swift */,
+				0ED354E4276A900A002C4D81 /* UrlImageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -351,11 +357,13 @@
 				0ED354E1276A6263002C4D81 /* RepositoryListViewModel.swift in Sources */,
 				0ED354D4276A5BE3002C4D81 /* Queryable.swift in Sources */,
 				0ED354A5276A24E4002C4D81 /* GitHubRepoNavigationView.swift in Sources */,
+				0ED354E5276A900A002C4D81 /* UrlImageModel.swift in Sources */,
 				0ED354DE276A614D002C4D81 /* Owner.swift in Sources */,
 				0ED354A3276A24E4002C4D81 /* DesafioGitHubApp.swift in Sources */,
 				0ED354D1276A5BAE002C4D81 /* SortBy.swift in Sources */,
 				0ED354E3276A6814002C4D81 /* GitHubRepoDetailsView.swift in Sources */,
 				0ED354CF276A5ACB002C4D81 /* GitHubRepositorySearchService.swift in Sources */,
+				0ED354E7276A9184002C4D81 /* GitHubAvatarService.swift in Sources */,
 				0ED354DC276A5FD9002C4D81 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
