@@ -9,6 +9,9 @@ struct Repository: Decodable, Identifiable {
 
     let owner: Owner
 
+    let watchers: Int
+    let forks: Int
+
     let homepage: String?
 
     let createdAt: Date

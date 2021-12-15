@@ -37,7 +37,7 @@ private struct GitHubRepoListItemsView: View {
     @StateObject var repositories: RepositoryListViewModel
 
     var body: some View {
-        ForEach(repositories.loaded) { repository in
+        ForEach(repositories.loadedRepositories) { repository in
             NavigationLink(destination: GitHubRepoDetailsView(repository)) {
                 GitHubRepoCellView(repository: repository)
             }
@@ -49,14 +49,56 @@ private struct GitHubRepoCellView: View {
     var repository: Repository
 
     var body: some View {
-        Text(repository.fullName)
+        VStack(alignment: .leading) {
+            HStack {
+                Text(repository.owner.login)
+                Text(repository.name)
+            }
+
+            Spacer()
+
+            HStack {
+                Text("Forks: \(repository.forks)")
+                Text("Watchers: \(repository.watchers)")
+            }
+        }
     }
 }
 
 #if DEBUG
 struct GitHubRepoListView_Previews: PreviewProvider {
     static var previews: some View {
-        GitHubRepoNavigationView()
+        GitHubRepoNavigationView(
+            repositories: RepositoryListViewModel(
+                repositories: Self.repositoryListDebugData
+            )
+        )
     }
+
+    static var repositoryListDebugData = [
+        Repository(
+            id: 1,
+            name: "Test",
+            fullName: "t/Test",
+            description: nil,
+            owner: Owner(login: "t", avatarUrl: ""),
+            watchers: 100,
+            forks: 3,
+            homepage: nil,
+            createdAt: Date(),
+            updatedAt: Date()
+        ), Repository(
+            id: 2,
+            name: "Alamofire",
+            fullName: "t/Alamofire",
+            description: nil,
+            owner: Owner(login: "t", avatarUrl: ""),
+            watchers: 143,
+            forks: 13,
+            homepage: nil,
+            createdAt: Date(),
+            updatedAt: Date()
+        )
+    ]
 }
 #endif

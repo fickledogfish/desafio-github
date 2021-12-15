@@ -14,9 +14,9 @@ struct GitHubRepositorySearchService {
 
     static let maxItemsPerPage = 30 // API limitation
 
-    private init() { }
+    init() { }
 
-    static func find(
+    func find(
         dg dispatchGroup: DispatchGroup,
         search: String = "language:Swift",
         sortBy: SortBy = .stars,
@@ -34,7 +34,7 @@ struct GitHubRepositorySearchService {
             ]
         ).responseDecodable(
             of: GitHubRepositoryQueryResponse.self,
-            decoder: decoder
+            decoder: Self.decoder
         ) { response in
             defer { dispatchGroup.leave() }
             guard let results = try? response.result.get() else { return }
