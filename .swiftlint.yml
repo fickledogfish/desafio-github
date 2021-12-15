@@ -1,0 +1,12 @@
+reporter: "xcode"
+
+excluded:
+  - Carthage
+  - Pods
+  - SwiftLint/Common/3rdPartyLib
+
+line_length:
+    warning: 80
+    error: 120
+    ignores_function_declarations: true
+    ignores_urls: true
