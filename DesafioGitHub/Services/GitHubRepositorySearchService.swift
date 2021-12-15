@@ -12,7 +12,7 @@ struct GitHubRepositorySearchService {
 
     static let baseUrl = "https://api.github.com/search/repositories"
 
-    static let maxItemsPerPage = 30 // API limitation
+    static let maxItemsPerPage = 100 // API limitation
 
     init() { }
 
@@ -32,12 +32,20 @@ struct GitHubRepositorySearchService {
                 "per_page": itemsPerPage,
                 "page": page
             ]
-        ).responseDecodable(
+        ) { request in
+            request.addValue(
+                "application/vnd.github.v3+json",
+                forHTTPHeaderField: "Accept"
+            )
+        }.responseDecodable(
             of: GitHubRepositoryQueryResponse.self,
             decoder: Self.decoder
         ) { response in
             defer { dispatchGroup.leave() }
             guard let results = try? response.result.get() else { return }
+
+            // TODO: Verificar se esta na ultima pagina
+            // print(response.response?.headers.value(for: "Link"))
 
             onComplete(results.items)
         }

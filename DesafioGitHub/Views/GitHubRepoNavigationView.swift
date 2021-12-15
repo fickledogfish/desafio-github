@@ -40,6 +40,8 @@ private struct GitHubRepoListItemsView: View {
         ForEach(repositories.loadedRepositories) { repository in
             NavigationLink(destination: GitHubRepoDetailsView(repository)) {
                 GitHubRepoCellView(repository: repository)
+            }.onAppear {
+                repositories.loadMoreIfNeeded(current: repository)
             }
         }
     }
