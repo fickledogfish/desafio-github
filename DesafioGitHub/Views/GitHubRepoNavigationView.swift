@@ -16,6 +16,17 @@ private struct GitHubRepoListView: View {
     var body: some View {
         List {
             GitHubRepoListItemsView(repositories: repositories)
+
+            if repositories.isLoading {
+                GeometryReader { geoProxy in
+                    ProgressView().position(
+                        x: geoProxy.size.width / 2,
+                        y: geoProxy.size.height / 2
+                    )
+                }
+                .listRowBackground(Color(UIColor.systemGroupedBackground))
+                .listRowSeparator(.hidden)
+            }
         }
         .navigationTitle("GitHub")
         .listStyle(.grouped)

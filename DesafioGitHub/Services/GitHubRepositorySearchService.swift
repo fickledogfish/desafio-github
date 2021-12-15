@@ -17,11 +17,12 @@ struct GitHubRepositorySearchService {
     private init() { }
 
     static func find(
+        dg dispatchGroup: DispatchGroup,
         search: String = "language:Swift",
         sortBy: SortBy = .stars,
         page: Int = 1,
         itemsPerPage: Int = maxItemsPerPage,
-        onComplete: ([Repository]) -> Void
+        onComplete: @escaping ([Repository]) -> Void
     ) {
         AF.request(
             Self.baseUrl,
@@ -35,7 +36,10 @@ struct GitHubRepositorySearchService {
             of: GitHubRepositoryQueryResponse.self,
             decoder: decoder
         ) { response in
-            debugPrint(response)
+            defer { dispatchGroup.leave() }
+            guard let results = try? response.result.get() else { return }
+
+            onComplete(results.items)
         }
     }
 }

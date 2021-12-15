@@ -19,12 +19,25 @@ class RepositoryListViewModel: ObservableObject {
 
         if canLoadMore && !isLoading &&
             currentIndex >= currentCount - Self.lookaheadMinimum {
+            isLoading = true
             loadMore()
         }
     }
 
     private func loadMore() {
-        GitHubRepositorySearchService.find { _ in
+        loadingDispatchGroup.enter()
+
+        GitHubRepositorySearchService.find(
+            dg: loadingDispatchGroup
+        ) { [weak self] repos in
+            guard let this = self else { return }
+
+            this.loaded.append(contentsOf: repos)
+        }
+
+        loadingDispatchGroup.notify(queue: DispatchQueue.main) { [weak self] in
+            guard let this = self else { return }
+            this.isLoading = false
         }
     }
 }
