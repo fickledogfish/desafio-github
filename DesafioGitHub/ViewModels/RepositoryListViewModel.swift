@@ -19,12 +19,12 @@ class RepositoryListViewModel: ObservableObject {
 
         if canLoadMore && !isLoading &&
             currentIndex >= currentCount - Self.lookaheadMinimum {
-            isLoading = true
             loadMore()
         }
     }
 
     private func loadMore() {
+        isLoading = true
         loadingDispatchGroup.enter()
 
         GitHubRepositorySearchService.find(
