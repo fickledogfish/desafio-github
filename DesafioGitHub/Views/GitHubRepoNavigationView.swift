@@ -89,7 +89,7 @@ private struct GitHubRepoCellView: View {
 }
 
 private struct GitHubRepoOwnerImageView: View {
-    @ObservedObject var imageModel: UrlImageModel
+    @ObservedObject var imageModel: UrlImageViewModel
 
     var body: some View {
         if let image = imageModel.image {
@@ -103,7 +103,7 @@ private struct GitHubRepoOwnerImageView: View {
     }
 
     init(_ imageUrl: String) {
-        imageModel = UrlImageModel(from: imageUrl)
+        imageModel = UrlImageViewModel(from: imageUrl)
     }
 }
 

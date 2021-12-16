@@ -1,7 +1,7 @@
 import UIKit
 import Foundation
 
-class UrlImageModel: ObservableObject {
+class UrlImageViewModel: ObservableObject {
     @Published var image: UIImage?
 
     let provider = GitHubAvatarService()
