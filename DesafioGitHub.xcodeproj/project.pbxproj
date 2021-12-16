@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E11C9FA276B70BF00CB3D32 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0E11C9F9276B70BF00CB3D32 /* Kingfisher */; };
+		0E11C9FC276B754100CB3D32 /* AvatarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11C9FB276B754100CB3D32 /* AvatarViewModel.swift */; };
 		0ED354A3276A24E4002C4D81 /* DesafioGitHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354A2276A24E4002C4D81 /* DesafioGitHubApp.swift */; };
 		0ED354A5276A24E4002C4D81 /* GitHubRepoNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354A4276A24E4002C4D81 /* GitHubRepoNavigationView.swift */; };
 		0ED354A7276A24E6002C4D81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ED354A6276A24E6002C4D81 /* Assets.xcassets */; };
@@ -22,8 +24,6 @@
 		0ED354DE276A614D002C4D81 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354DD276A614D002C4D81 /* Owner.swift */; };
 		0ED354E1276A6263002C4D81 /* RepositoryListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E0276A6263002C4D81 /* RepositoryListViewModel.swift */; };
 		0ED354E3276A6814002C4D81 /* GitHubRepoDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E2276A6814002C4D81 /* GitHubRepoDetailsView.swift */; };
-		0ED354E5276A900A002C4D81 /* UrlImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E4276A900A002C4D81 /* UrlImageViewModel.swift */; };
-		0ED354E7276A9184002C4D81 /* GitHubAvatarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354E6276A9184002C4D81 /* GitHubAvatarService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E11C9FB276B754100CB3D32 /* AvatarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarViewModel.swift; sourceTree = "<group>"; };
 		0ED3549F276A24E4002C4D81 /* DesafioGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED354A2276A24E4002C4D81 /* DesafioGitHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioGitHubApp.swift; sourceTree = "<group>"; };
 		0ED354A4276A24E4002C4D81 /* GitHubRepoNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoNavigationView.swift; sourceTree = "<group>"; };
@@ -61,8 +62,6 @@
 		0ED354DD276A614D002C4D81 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		0ED354E0276A6263002C4D81 /* RepositoryListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryListViewModel.swift; sourceTree = "<group>"; };
 		0ED354E2276A6814002C4D81 /* GitHubRepoDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoDetailsView.swift; sourceTree = "<group>"; };
-		0ED354E4276A900A002C4D81 /* UrlImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UrlImageViewModel.swift; sourceTree = "<group>"; };
-		0ED354E6276A9184002C4D81 /* GitHubAvatarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubAvatarService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E11C9FA276B70BF00CB3D32 /* Kingfisher in Frameworks */,
 				0ED354D7276A5CE1002C4D81 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -165,7 +165,6 @@
 			children = (
 				0ED354CE276A5ACB002C4D81 /* GitHubRepositorySearchService.swift */,
 				0ED354D0276A5BAE002C4D81 /* SortBy.swift */,
-				0ED354E6276A9184002C4D81 /* GitHubAvatarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -191,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				0ED354E0276A6263002C4D81 /* RepositoryListViewModel.swift */,
-				0ED354E4276A900A002C4D81 /* UrlImageViewModel.swift */,
+				0E11C9FB276B754100CB3D32 /* AvatarViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -215,6 +214,7 @@
 			name = DesafioGitHub;
 			packageProductDependencies = (
 				0ED354D6276A5CE1002C4D81 /* Alamofire */,
+				0E11C9F9276B70BF00CB3D32 /* Kingfisher */,
 			);
 			productName = DesafioGitHub;
 			productReference = 0ED3549F276A24E4002C4D81 /* DesafioGitHub.app */;
@@ -290,6 +290,7 @@
 			mainGroup = 0ED35496276A24E4002C4D81;
 			packageReferences = (
 				0ED354D5276A5CE1002C4D81 /* XCRemoteSwiftPackageReference "Alamofire" */,
+				0E11C9F8276B70BF00CB3D32 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0ED354A0276A24E4002C4D81 /* Products */;
 			projectDirPath = "";
@@ -357,13 +358,12 @@
 				0ED354E1276A6263002C4D81 /* RepositoryListViewModel.swift in Sources */,
 				0ED354D4276A5BE3002C4D81 /* Queryable.swift in Sources */,
 				0ED354A5276A24E4002C4D81 /* GitHubRepoNavigationView.swift in Sources */,
-				0ED354E5276A900A002C4D81 /* UrlImageViewModel.swift in Sources */,
 				0ED354DE276A614D002C4D81 /* Owner.swift in Sources */,
 				0ED354A3276A24E4002C4D81 /* DesafioGitHubApp.swift in Sources */,
 				0ED354D1276A5BAE002C4D81 /* SortBy.swift in Sources */,
 				0ED354E3276A6814002C4D81 /* GitHubRepoDetailsView.swift in Sources */,
+				0E11C9FC276B754100CB3D32 /* AvatarViewModel.swift in Sources */,
 				0ED354CF276A5ACB002C4D81 /* GitHubRepositorySearchService.swift in Sources */,
-				0ED354E7276A9184002C4D81 /* GitHubAvatarService.swift in Sources */,
 				0ED354DC276A5FD9002C4D81 /* Repository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,6 +707,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0E11C9F8276B70BF00CB3D32 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 		0ED354D5276A5CE1002C4D81 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire";
@@ -718,6 +726,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0E11C9F9276B70BF00CB3D32 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0E11C9F8276B70BF00CB3D32 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		0ED354D6276A5CE1002C4D81 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0ED354D5276A5CE1002C4D81 /* XCRemoteSwiftPackageReference "Alamofire" */;

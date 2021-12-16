@@ -1,4 +1,5 @@
 import SwiftUI
+import Kingfisher
 
 struct GitHubRepoNavigationView: View {
     @StateObject var repositories = RepositoryListViewModel()
@@ -89,21 +90,19 @@ private struct GitHubRepoCellView: View {
 }
 
 private struct GitHubRepoOwnerImageView: View {
-    @ObservedObject var imageModel: UrlImageViewModel
+    @ObservedObject var avatar: AvatarViewModel
 
     var body: some View {
-        if let image = imageModel.image {
-            Image(uiImage: image)
-                .resizable()
-                .scaledToFit()
-                .frame(maxWidth: 50)
-        } else {
-            Image(systemName: "trash")
-        }
+        KFImage
+            .url(avatar.url)
+            .placeholder { ProgressView() }
+            .resizable()
+            .scaledToFit()
+            .frame(maxWidth: 50)
     }
 
     init(_ imageUrl: String) {
-        imageModel = UrlImageViewModel(from: imageUrl)
+        avatar = AvatarViewModel(url: imageUrl)
     }
 }
 
