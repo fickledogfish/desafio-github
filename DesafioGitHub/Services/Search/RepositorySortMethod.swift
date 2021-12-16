@@ -1,13 +1,13 @@
 import Foundation
 
-enum RepositorySortBy: CaseIterable {
+enum RepositorySortMethod: CaseIterable {
     case stars
     case forks
     case helpWantedIssues
     case updated
 }
 
-extension RepositorySortBy: Queryable {
+extension RepositorySortMethod: Queryable {
     var queryParam: String {
         switch self {
         case .stars: return "stars"

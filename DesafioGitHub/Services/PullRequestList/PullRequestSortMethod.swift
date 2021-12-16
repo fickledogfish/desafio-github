@@ -1,10 +1,10 @@
 import Foundation
 
-enum PullRequestSortBy {
+enum PullRequestSortMethod {
     case created, updated, popularity, longRunning
 }
 
-extension PullRequestSortBy: Queryable {
+extension PullRequestSortMethod: Queryable {
     var queryParam: String {
         switch self {
         case .created: return "created"

@@ -16,11 +16,17 @@ struct GitHubRepoNavigationView: View {
                 "Change sorting",
                 isPresented: $showingConfirmation
             ) {
-                ForEach(RepositorySortBy.allCases, id: \.self) { sortOption in
-                    Button(sortOption.queryParam) {
-                        print(sortOption.queryParam)
-                        repositories.sortMethod = sortOption
-                        repositories.reloadData()
+                ForEach(
+                    RepositorySortMethod.allCases, id: \.self
+                ) { sortOption in
+                    let isCurrentMethod = repositories.sortMethod == sortOption
+                    let currentLabel = isCurrentMethod ? " (current)" : ""
+
+                    Button(sortOption.queryParam + currentLabel) {
+                        if !isCurrentMethod {
+                            repositories.sortMethod = sortOption
+                            repositories.reloadData()
+                        }
                     }
                 }
 

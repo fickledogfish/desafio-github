@@ -19,7 +19,7 @@ struct GitHubRepositorySearchService {
     func find(
         dg dispatchGroup: DispatchGroup,
         search: String = "language:Swift",
-        sortBy: RepositorySortBy = .stars,
+        sortBy: RepositorySortMethod = .stars,
         order: SortDirection = .descending,
         page: Int = 1,
         itemsPerPage: Int = maxItemsPerPage,

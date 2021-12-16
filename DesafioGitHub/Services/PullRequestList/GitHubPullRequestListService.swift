@@ -20,7 +20,7 @@ struct GitHubPullRequestListService {
         dg dispatchGroup: DispatchGroup,
         for repositoryFullName: String,
         state: PullRequestState = .open,
-        sort: PullRequestSortBy = .created,
+        sort: PullRequestSortMethod = .created,
         direction: SortDirection = .ascending,
         page: Int = 1,
         itemsPerPage: Int = maxItemsPerPage,

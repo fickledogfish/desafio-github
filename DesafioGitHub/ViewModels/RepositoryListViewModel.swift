@@ -6,7 +6,7 @@ class RepositoryListViewModel: ObservableObject {
     @Published private(set) var isLoading = false
     @Published private(set) var loadedRepositories = [RepositoryModel]()
 
-    var sortMethod: RepositorySortBy = .stars
+    var sortMethod: RepositorySortMethod = .stars
     var ordering: SortDirection = .descending
 
     private var canLoadMore = true
