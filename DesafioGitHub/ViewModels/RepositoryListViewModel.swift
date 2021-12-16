@@ -4,7 +4,7 @@ class RepositoryListViewModel: ObservableObject {
     private static let lookaheadMinimum = 10
 
     @Published private(set) var isLoading = false
-    @Published private(set) var loadedRepositories = [Repository]()
+    @Published private(set) var loadedRepositories = [RepositoryModel]()
 
     private var canLoadMore = true
     private var currentPage = 0
@@ -21,17 +21,17 @@ class RepositoryListViewModel: ObservableObject {
 
     // Para ser usado com previews
     #if DEBUG
-    init(repositories: [Repository]) {
+    init(repositories: [RepositoryModel]) {
         searchServiceProvider = nil
         loadedRepositories = repositories
         isLoading = true
     }
     #endif
 
-    func loadMoreIfNeeded(current: Repository) {
-        let currentCount = loadedRepositories.count
-        let currentIndex = loadedRepositories.firstIndex { current.id == $0.id } ?? 0
-        let isNearLookahead = currentIndex >= currentCount - Self.lookaheadMinimum
+    func loadMoreIfNeeded(current: RepositoryModel) {
+        let currCount = loadedRepositories.count
+        let currIndex = loadedRepositories.firstIndex { current.id == $0.id } ?? 0
+        let isNearLookahead = currIndex >= currCount - Self.lookaheadMinimum
 
         if canLoadMore && !isLoading && isNearLookahead {
             loadNextPage()

@@ -39,7 +39,7 @@ private struct GitHubRepoListItemsView: View {
 
     var body: some View {
         ForEach(repositories.loadedRepositories) { repository in
-            NavigationLink(destination: GitHubRepoDetailsView(repository)) {
+            NavigationLink(destination: GitHubPullRequestsView(repository)) {
                 GitHubRepoCellView(repository: repository)
             }.onAppear {
                 repositories.loadMoreIfNeeded(current: repository)
@@ -49,7 +49,7 @@ private struct GitHubRepoListItemsView: View {
 }
 
 private struct GitHubRepoCellView: View {
-    var repository: Repository
+    var repository: RepositoryModel
 
     var body: some View {
         HStack(spacing: 20) {
@@ -117,25 +117,25 @@ struct GitHubRepoListView_Previews: PreviewProvider {
     }
 
     static var repositoryListDebugData = [
-        Repository(
+        RepositoryModel(
             id: 1,
             name: "Test",
             fullName: "t/Test",
             description: "Yoggoth mnahn' vulgtm ebunma nafln'gha kn'a 'ai, " +
             "cgeb wgah'n shtunggliog bug hupadgh, goka ya fhtagn shugg " +
             "ebunma.",
-            owner: Owner(login: "t", avatarUrl: ""),
+            owner: User(login: "t", avatarUrl: ""),
             watchers: 100,
             forks: 3,
             homepage: nil,
             createdAt: Date(),
             updatedAt: Date()
-        ), Repository(
+        ), RepositoryModel(
             id: 2,
             name: "Alamofire",
             fullName: "t/Alamofire",
             description: nil,
-            owner: Owner(login: "testAccount", avatarUrl: ""),
+            owner: User(login: "testAccount", avatarUrl: ""),
             watchers: 143,
             forks: 13,
             homepage: nil,

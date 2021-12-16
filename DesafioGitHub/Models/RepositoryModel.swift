@@ -1,13 +1,13 @@
 import Foundation
 
-struct Repository: Decodable, Identifiable {
+struct RepositoryModel: Decodable, Identifiable {
     let id: Int
 
     let name: String
     let fullName: String
     let description: String?
 
-    let owner: Owner
+    let owner: User
 
     let watchers: Int
     let forks: Int

@@ -1,10 +1,10 @@
 import Foundation
 
-enum SortBy {
+enum RepositorySortBy {
     case stars
 }
 
-extension SortBy: Queryable {
+extension RepositorySortBy: Queryable {
     var queryParam: String {
         switch self {
         case .stars: return "stars"

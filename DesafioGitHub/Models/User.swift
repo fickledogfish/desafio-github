@@ -1,6 +1,6 @@
 import Foundation
 
-struct Owner: Decodable {
+struct User: Decodable {
     let login: String
     let avatarUrl: String
 }

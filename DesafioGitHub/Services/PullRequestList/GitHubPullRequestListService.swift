@@ -1,7 +1,7 @@
 import Alamofire
 import Foundation
 
-struct GitHubRepositorySearchService {
+struct GitHubPullRequestListService {
     static let decoder: DataDecoder = {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
@@ -10,25 +10,30 @@ struct GitHubRepositorySearchService {
         return decoder
     }()
 
-    static let baseUrl = "https://api.github.com/search/repositories"
+    static let baseUrl = "https://api.github.com/repos/%@/pulls"
 
     static let maxItemsPerPage = 100 // API limitation
 
     init() { }
 
-    func find(
+    func list(
         dg dispatchGroup: DispatchGroup,
-        search: String = "language:Swift",
-        sortBy: SortBy = .stars,
+        for repositoryFullName: String,
+        state: PullRequestState = .open,
+        sort: PullRequestSortBy = .created,
+        direction: SortDirection = .ascending,
         page: Int = 1,
         itemsPerPage: Int = maxItemsPerPage,
-        onComplete: @escaping ([Repository]) -> Void
+        onComplete: @escaping ([PullRequestModel]) -> Void
     ) {
+        let url = String(format: Self.baseUrl, repositoryFullName)
+
         AF.request(
-            Self.baseUrl,
+            url,
             parameters: [
-                "q": search,
-                "sort": sortBy.queryParam,
+                "state": state.queryParam,
+                "sort": sort.queryParam,
+                "direction": direction.queryParam,
                 "per_page": itemsPerPage,
                 "page": page
             ]
@@ -38,20 +43,15 @@ struct GitHubRepositorySearchService {
                 forHTTPHeaderField: "Accept"
             )
         }.responseDecodable(
-            of: GitHubRepositoryQueryResponse.self,
+            of: [PullRequestModel].self,
             decoder: Self.decoder
         ) { response in
             defer { dispatchGroup.leave() }
-            guard let results = try? response.result.get() else { return }
+            guard let pullRequests = try? response.result.get() else { return }
 
             // TODO: Verificar se esta na ultima pagina
-            // print(response.response?.headers.value(for: "Link"))
 
-            onComplete(results.items)
+            onComplete(pullRequests)
         }
     }
-}
-
-private struct GitHubRepositoryQueryResponse: Decodable {
-    let items: [Repository]
 }
