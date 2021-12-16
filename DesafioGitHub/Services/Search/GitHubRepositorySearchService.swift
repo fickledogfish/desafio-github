@@ -20,6 +20,7 @@ struct GitHubRepositorySearchService {
         dg dispatchGroup: DispatchGroup,
         search: String = "language:Swift",
         sortBy: RepositorySortBy = .stars,
+        order: SortDirection = .descending,
         page: Int = 1,
         itemsPerPage: Int = maxItemsPerPage,
         onComplete: @escaping ([RepositoryModel]) -> Void
@@ -29,6 +30,7 @@ struct GitHubRepositorySearchService {
             parameters: [
                 "q": search,
                 "sort": sortBy.queryParam,
+                "order": order.queryParam,
                 "per_page": itemsPerPage,
                 "page": page
             ]

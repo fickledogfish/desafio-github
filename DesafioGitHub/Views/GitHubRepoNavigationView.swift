@@ -2,11 +2,33 @@ import SwiftUI
 import Kingfisher
 
 struct GitHubRepoNavigationView: View {
+    @State private var showingConfirmation = false
+
     @StateObject var repositories = RepositoryListViewModel()
 
     var body: some View {
         NavigationView {
             GitHubRepoListView(repositories: repositories)
+        .toolbar {
+            Button("Sort") {
+                showingConfirmation = true
+            }.confirmationDialog(
+                "Change sorting",
+                isPresented: $showingConfirmation
+            ) {
+                ForEach(RepositorySortBy.allCases, id: \.self) { sortOption in
+                    Button(sortOption.queryParam) {
+                        print(sortOption.queryParam)
+                        repositories.sortMethod = sortOption
+                        repositories.reloadData()
+                    }
+                }
+
+                Button("Cancel", role: .cancel) { }
+            } message: {
+                Text("Select desired sorting method")
+            }
+        }
         }
     }
 }

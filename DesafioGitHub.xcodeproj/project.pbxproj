@@ -122,7 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				0E11CA04276B91A100CB3D32 /* PullRequestSortBy.swift */,
-				0E11CA06276B927C00CB3D32 /* SortDirection.swift */,
 				0E11CA09276B933F00CB3D32 /* PullRequestState.swift */,
 				0E11CA00276B8BB500CB3D32 /* GitHubPullRequestListService.swift */,
 			);
@@ -203,6 +202,7 @@
 		0ED354CD276A5AA4002C4D81 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				0E11CA06276B927C00CB3D32 /* SortDirection.swift */,
 				0E11CA0C276B979F00CB3D32 /* Search */,
 				0E11CA0D276B97B600CB3D32 /* PullRequestList */,
 			);

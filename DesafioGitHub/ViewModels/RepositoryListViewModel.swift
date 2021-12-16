@@ -6,17 +6,19 @@ class RepositoryListViewModel: ObservableObject {
     @Published private(set) var isLoading = false
     @Published private(set) var loadedRepositories = [RepositoryModel]()
 
+    var sortMethod: RepositorySortBy = .stars
+    var ordering: SortDirection = .descending
+
     private var canLoadMore = true
     private var currentPage = 0
     private let loadingDispatchGroup = DispatchGroup()
 
-    private let searchServiceProvider: GitHubRepositorySearchService?
+    private var searchServiceProvider: GitHubRepositorySearchService?
 
     init() {
         searchServiceProvider = GitHubRepositorySearchService()
-        loadedRepositories = []
 
-        loadNextPage()
+        reloadData()
     }
 
     // Para ser usado com previews
@@ -27,6 +29,12 @@ class RepositoryListViewModel: ObservableObject {
         isLoading = true
     }
     #endif
+
+    func reloadData() {
+        loadedRepositories = []
+
+        loadNextPage()
+    }
 
     func loadMoreIfNeeded(current: RepositoryModel) {
         let currCount = loadedRepositories.count
@@ -47,6 +55,8 @@ class RepositoryListViewModel: ObservableObject {
 
         provider.find(
             dg: loadingDispatchGroup,
+            sortBy: self.sortMethod,
+            order: self.ordering,
             page: currentPage
         ) { [weak self] repos in
             guard let this = self else { return }
