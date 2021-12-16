@@ -15,6 +15,9 @@
 		0E11CA05276B91A100CB3D32 /* PullRequestSortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11CA04276B91A100CB3D32 /* PullRequestSortBy.swift */; };
 		0E11CA07276B927C00CB3D32 /* SortDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11CA06276B927C00CB3D32 /* SortDirection.swift */; };
 		0E11CA0A276B933F00CB3D32 /* PullRequestState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11CA09276B933F00CB3D32 /* PullRequestState.swift */; };
+		0E11CA11276BAAE800CB3D32 /* GitHubPullRequestDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11CA10276BAAE800CB3D32 /* GitHubPullRequestDetailView.swift */; };
+		0E11CA13276BB65500CB3D32 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11CA12276BB65500CB3D32 /* WebView.swift */; };
+		0E11CA15276BB78100CB3D32 /* WebViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E11CA14276BB78100CB3D32 /* WebViewModel.swift */; };
 		0ED354A3276A24E4002C4D81 /* DesafioGitHubApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354A2276A24E4002C4D81 /* DesafioGitHubApp.swift */; };
 		0ED354A5276A24E4002C4D81 /* GitHubRepoNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ED354A4276A24E4002C4D81 /* GitHubRepoNavigationView.swift */; };
 		0ED354A7276A24E6002C4D81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ED354A6276A24E6002C4D81 /* Assets.xcassets */; };
@@ -57,6 +60,9 @@
 		0E11CA04276B91A100CB3D32 /* PullRequestSortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestSortBy.swift; sourceTree = "<group>"; };
 		0E11CA06276B927C00CB3D32 /* SortDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortDirection.swift; sourceTree = "<group>"; };
 		0E11CA09276B933F00CB3D32 /* PullRequestState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullRequestState.swift; sourceTree = "<group>"; };
+		0E11CA10276BAAE800CB3D32 /* GitHubPullRequestDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubPullRequestDetailView.swift; sourceTree = "<group>"; };
+		0E11CA12276BB65500CB3D32 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		0E11CA14276BB78100CB3D32 /* WebViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewModel.swift; sourceTree = "<group>"; };
 		0ED3549F276A24E4002C4D81 /* DesafioGitHub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DesafioGitHub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ED354A2276A24E4002C4D81 /* DesafioGitHubApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesafioGitHubApp.swift; sourceTree = "<group>"; };
 		0ED354A4276A24E4002C4D81 /* GitHubRepoNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubRepoNavigationView.swift; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 			children = (
 				0ED354A4276A24E4002C4D81 /* GitHubRepoNavigationView.swift */,
 				0ED354E2276A6814002C4D81 /* GitHubPullRequestsView.swift */,
+				0E11CA10276BAAE800CB3D32 /* GitHubPullRequestDetailView.swift */,
+				0E11CA12276BB65500CB3D32 /* WebView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -225,6 +233,7 @@
 				0ED354E0276A6263002C4D81 /* RepositoryListViewModel.swift */,
 				0E11C9FB276B754100CB3D32 /* AvatarViewModel.swift */,
 				0E11C9FD276B7BEF00CB3D32 /* RepositoryPullRequestsViewModel.swift */,
+				0E11CA14276BB78100CB3D32 /* WebViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -397,12 +406,15 @@
 				0ED354DE276A614D002C4D81 /* User.swift in Sources */,
 				0ED354A3276A24E4002C4D81 /* DesafioGitHubApp.swift in Sources */,
 				0ED354D1276A5BAE002C4D81 /* RepositorySortBy.swift in Sources */,
+				0E11CA15276BB78100CB3D32 /* WebViewModel.swift in Sources */,
 				0E11CA0A276B933F00CB3D32 /* PullRequestState.swift in Sources */,
 				0E11C9FE276B7BEF00CB3D32 /* RepositoryPullRequestsViewModel.swift in Sources */,
 				0ED354E3276A6814002C4D81 /* GitHubPullRequestsView.swift in Sources */,
 				0E11CA05276B91A100CB3D32 /* PullRequestSortBy.swift in Sources */,
 				0E11C9FC276B754100CB3D32 /* AvatarViewModel.swift in Sources */,
 				0ED354CF276A5ACB002C4D81 /* GitHubRepositorySearchService.swift in Sources */,
+				0E11CA11276BAAE800CB3D32 /* GitHubPullRequestDetailView.swift in Sources */,
+				0E11CA13276BB65500CB3D32 /* WebView.swift in Sources */,
 				0ED354DC276A5FD9002C4D81 /* RepositoryModel.swift in Sources */,
 				0E11CA01276B8BB500CB3D32 /* GitHubPullRequestListService.swift in Sources */,
 			);

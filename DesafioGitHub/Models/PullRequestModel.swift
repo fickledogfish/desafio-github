@@ -5,6 +5,7 @@ struct PullRequestModel: Decodable, Identifiable {
     let number: Int
 
     let createdAt: Date
+    let htmlUrl: String
 
     let user: User
 
