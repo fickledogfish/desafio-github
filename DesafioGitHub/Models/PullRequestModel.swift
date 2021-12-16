@@ -8,6 +8,6 @@ struct PullRequestModel: Decodable, Identifiable {
 
     let user: User
 
-    let tite: String
+    let title: String
     let body: String
 }

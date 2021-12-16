@@ -5,9 +5,9 @@ struct GitHubPullRequestsView: View {
 
     var body: some View {
         VStack {
-            Text("hi there")
             ForEach(pullRequests.pullRequests) { pullRequest in
-                Text("\(pullRequest.id)")
+                Text("\(pullRequest.number)")
+                Text("\(pullRequest.title)")
             }
         }.navigationTitle(pullRequests.repositoryFullName)
     }
