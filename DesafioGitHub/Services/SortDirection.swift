@@ -1,7 +1,16 @@
 import Foundation
 
 enum SortDirection {
-    case ascending, descending
+    case ascending
+    case descending
+
+    mutating func reverse() {
+        if self == .ascending {
+            self = .descending
+        } else {
+            self = .ascending
+        }
+    }
 }
 
 extension SortDirection: Queryable {

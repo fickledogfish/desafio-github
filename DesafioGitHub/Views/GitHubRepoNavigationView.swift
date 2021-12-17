@@ -2,40 +2,87 @@ import SwiftUI
 import Kingfisher
 
 struct GitHubRepoNavigationView: View {
-    @State private var showingConfirmation = false
-
-    @StateObject var repositories = RepositoryListViewModel()
+    @State var searchText = ""
+    @ObservedObject var repositories = RepositoryListViewModel()
 
     var body: some View {
         NavigationView {
-            GitHubRepoListView(repositories: repositories)
-        .toolbar {
-            Button("Sort") {
-                showingConfirmation = true
-            }.confirmationDialog(
-                "Change sorting",
-                isPresented: $showingConfirmation
-            ) {
-                ForEach(
-                    RepositorySortMethod.allCases, id: \.self
-                ) { sortOption in
-                    let isCurrentMethod = repositories.sortMethod == sortOption
-                    let currentLabel = isCurrentMethod ? " (current)" : ""
-
-                    Button(sortOption.queryParam + currentLabel) {
-                        if !isCurrentMethod {
-                            repositories.sortMethod = sortOption
-                            repositories.reloadData()
-                        }
-                    }
+            GitHubRepoListView(repositories: repositories).toolbar {
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    SortDirectionButton(repositories: repositories)
+                    SortOptionsDialogView(repositories: repositories)
                 }
-
-                Button("Cancel", role: .cancel) { }
-            } message: {
-                Text("Select desired sorting method")
             }
         }
+        .navigationViewStyle(.stack)
+        .searchable(text: $searchText)
+    }
+}
+
+private struct SortDirectionButton: View {
+    @ObservedObject var repositories: RepositoryListViewModel
+
+    var body: some View {
+        Button {
+            repositories.ordering.reverse()
+            repositories.reloadData()
+        } label: {
+            Image(systemName: {
+                switch repositories.ordering {
+                case .ascending: return "chevron.up"
+                case .descending: return "chevron.down"
+                }
+            }())
         }
+    }
+}
+
+private struct SortOptionsDialogView: View {
+    @State private var showingSortOptions = false
+
+    var repositories: RepositoryListViewModel
+
+    var body: some View {
+        Button("Sort") {
+            showingSortOptions = true
+        }.confirmationDialog(
+            "Change sorting",
+            isPresented: $showingSortOptions
+        ) {
+            ForEach(
+                RepositorySortMethod.allCases, id: \.self
+            ) { sortOption in
+                SortOptionButtonView(
+                    repositories: repositories,
+                    currentlySelected: repositories.sortMethod,
+                    sortMethod: sortOption
+                )
+            }
+
+            Button("Cancel", role: .cancel) { }
+        } message: {
+            Text("Select desired sorting method")
+        }
+    }
+}
+
+private struct SortOptionButtonView: View {
+    var repositories: RepositoryListViewModel
+
+    var currentlySelected: RepositorySortMethod
+    var sortMethod: RepositorySortMethod
+
+    var body: some View {
+        let isCurrent = currentlySelected == sortMethod
+        let currentLabel = isCurrent ? " (current)" : ""
+
+        Button(sortMethod.queryParam + currentLabel) {
+            if !isCurrent {
+                repositories.sortMethod = sortMethod
+                repositories.reloadData()
+            }
+        }
+
     }
 }
 

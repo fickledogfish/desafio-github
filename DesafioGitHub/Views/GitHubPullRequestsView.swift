@@ -14,6 +14,7 @@ struct GitHubPullRequestsView: View {
 }
 
 private struct PullRequestListView: View {
+    @State var searchText = ""
     @StateObject var pullRequests: RepositoryPullRequestsViewModel
 
     var body: some View {
@@ -26,6 +27,7 @@ private struct PullRequestListView: View {
                 }
             }
         }
+        .searchable(text: $searchText)
         .navigationTitle(pullRequests.repositoryFullName)
         .listStyle(.grouped)
     }

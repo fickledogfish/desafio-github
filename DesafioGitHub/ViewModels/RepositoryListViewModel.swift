@@ -32,6 +32,7 @@ class RepositoryListViewModel: ObservableObject {
 
     func reloadData() {
         loadedRepositories = []
+        currentPage = 0
 
         loadNextPage()
     }
