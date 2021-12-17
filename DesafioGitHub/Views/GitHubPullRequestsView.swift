@@ -24,6 +24,8 @@ private struct PullRequestListView: View {
                     destination: GitHubPullRequestDetailView(pullRequest)
                 ) {
                     PullRequestCellView(pullRequest)
+                }.onAppear {
+                    pullRequests.loadMoreIfNeeded(current: pullRequest)
                 }
             }
         }
@@ -70,8 +72,6 @@ private struct PullRequestCellView: View {
             Text(pullRequest.body)
                 .font(.body)
                 .lineLimit(5)
-        }.onAppear {
-            print(pullRequest.title)
         }
     }
 

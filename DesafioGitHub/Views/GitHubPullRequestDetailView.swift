@@ -2,10 +2,11 @@ import Foundation
 import SwiftUI
 
 struct GitHubPullRequestDetailView: View {
-    var model: WebViewModel
+    @ObservedObject var model: WebViewModel
 
     var body: some View {
         WebView(webView: model.webView)
+            .navigationTitle(model.webView.title ?? "")
     }
 
     init(_ pullRequest: PullRequestModel) {

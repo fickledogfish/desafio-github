@@ -1,8 +1,8 @@
 import Foundation
 import WebKit
 
-class WebViewModel {
-    let webView: WKWebView
+class WebViewModel: ObservableObject {
+    @Published var webView: WKWebView
     let url: String
 
     init(url: String) {
